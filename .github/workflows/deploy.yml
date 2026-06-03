@@ -1,38 +1,51 @@
-name: Flutter Web Deploy
+name: Deploy Flutter Web
 
 on:
   push:
     branches:
-      - main  # 每次 push 到 main 自动触发
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  build_and_deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. 检出仓库代码
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      # 2. 安装 Flutter
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
 
-      # 3. 获取依赖
       - run: flutter pub get
 
-      # 4. 构建 Web
       - run: flutter build web --release --base-href "/lynx_asset_management/"
 
-      # 5. 部署到 GitHub Pages
-      - name: Deploy to GitHub Pages
-        run: |
-          cd build/web
-          git init
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add -A
-          git commit -m "Deploy Flutter Web"
-          git branch -M gh-pages
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git push -f origin gh-pages
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
