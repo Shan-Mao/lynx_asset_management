@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
+import '../utils/strings.dart';
+
 /// Interactive 1:1 square crop editor.
 ///
 /// **Algorithm** — drag a corner handle to resize:
@@ -181,7 +183,7 @@ class _ImageEditorScreenState extends State<ImageEditorScreen> {
         title: const Text(''),
         centerTitle: true,
         actions: [
-          TextButton(onPressed: _saving ? null : _done, child: const Text('完成')),
+          TextButton(onPressed: _saving ? null : _done, child: Text(S.imageEditorDone)),
         ],
       ),
       body: Column(children: [
@@ -228,17 +230,17 @@ class _ImageEditorScreenState extends State<ImageEditorScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('操作说明', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold)),
+            Text(S.imageEditorInstructions, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold)),
             const SizedBox(height: 4),
-            Text('• 拖拽裁剪框内部 → 移动裁剪区域', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-            Text('• 拖拽四角白色方块 → 调整裁剪大小（始终保持 1:1 正方形）', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(S.imageEditorHintMove, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(S.imageEditorHintResize, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
             const SizedBox(height: 8),
-            Text('裁剪算法', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold)),
+            Text(S.imageEditorAlgorithm, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold)),
             const SizedBox(height: 4),
-            Text('• 固定对角：拖拽手柄的对角作为锚点，位置不动', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-            Text('• 新手柄位置 = 当前角坐标 + 拖拽偏移量', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-            Text('• 新边长 = max(|手柄X − 锚点X|, |手柄Y − 锚点Y|)', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-            Text('• 手柄离锚点远 → 放大 · 手柄靠近锚点 → 缩小', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(S.imageEditorAlgoAnchor, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(S.imageEditorAlgoHandle, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(S.imageEditorAlgoSide, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(S.imageEditorAlgoScale, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
           ]),
         ),
         const SizedBox(height: 8),

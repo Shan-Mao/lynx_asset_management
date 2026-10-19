@@ -114,6 +114,8 @@ class S {
   static String get profileSettings => t('profile_settings');
   static String get profileAbout => t('profile_about');
   static String get profileThemeTooltip => t('profile_theme_tooltip');
+  static String get profileChooseIcon => t('profile_choose_icon');
+  static String get profilePickGallery => t('profile_pick_gallery');
 
   static String get settingsPersonalization => t('settings_personalization');
   static String get settingsExport => t('settings_export');
@@ -173,6 +175,16 @@ class S {
   static String get backgroundPickFailed => t('background_pick_failed');
 
   static String get seedPresets => t('seed_presets');
+
+  static String get imageEditorDone => t('image_editor_done');
+  static String get imageEditorInstructions => t('image_editor_instructions');
+  static String get imageEditorHintMove => t('image_editor_hint_move');
+  static String get imageEditorHintResize => t('image_editor_hint_resize');
+  static String get imageEditorAlgorithm => t('image_editor_algorithm');
+  static String get imageEditorAlgoAnchor => t('image_editor_algo_anchor');
+  static String get imageEditorAlgoHandle => t('image_editor_algo_handle');
+  static String get imageEditorAlgoSide => t('image_editor_algo_side');
+  static String get imageEditorAlgoScale => t('image_editor_algo_scale');
 
   static String get aboutDesc => t('about_desc');
   static String get aboutFeatureAsset => t('about_feature_asset');

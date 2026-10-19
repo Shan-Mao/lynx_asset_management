@@ -1,3 +1,8 @@
+/// Application version shown on the About screen.
+///
+/// Keep in sync with the `version:` field in `pubspec.yaml`.
+const String appVersion = '0.1.0';
+
 /// Default categories for asset classification.
 const List<String> defaultCategories = [
   '电子产品',
