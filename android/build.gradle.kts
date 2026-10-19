@@ -1,3 +1,9 @@
+plugins {
+    id("com.android.application") apply false
+    id("com.android.library") apply false
+    id("org.jetbrains.kotlin.android") apply false
+}
+
 allprojects {
     repositories {
         maven { url = uri("https://maven.aliyun.com/repository/public/")}
@@ -24,6 +30,14 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+subprojects {
+    plugins.withId("com.android.library") {
+        extensions.configure<com.android.build.gradle.LibraryExtension>("android") {
+            compileSdk = 36
+        }
+    }
 }
 
 tasks.register<Delete>("clean") {

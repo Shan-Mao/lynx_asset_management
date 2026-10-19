@@ -33,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
   Future<void> _startImageFlow(BuildContext context) async {
     // Context must be valid (not from a now-closed bottom sheet).
     if (!context.mounted) return;
-    final result = await FilePicker.platform.pickFiles(type: FileType.image, withData: true);
+    final result = await FilePicker.pickFiles(type: FileType.image, withData: true);
     if (result == null || result.files.isEmpty) return;
     final bytes = result.files.first.bytes;
     if (bytes == null || !context.mounted) return;

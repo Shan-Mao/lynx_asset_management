@@ -60,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ..showSnackBar(SnackBar(content: Text(S.homeExportFailed), duration: const Duration(seconds: 2)));
       }
     } else {
-      final result = await FilePicker.platform.saveFile(
+      final result = await FilePicker.saveFile(
         dialogTitle: S.homeExportDialogTitle,
         fileName: '$fileName.txt',
         bytes: bytes,
@@ -76,7 +76,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _importData() async {
     final messenger = ScaffoldMessenger.of(context);
     final provider = context.read<AssetProvider>();
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       type: FileType.any,
       withData: true,
     );

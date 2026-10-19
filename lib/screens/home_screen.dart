@@ -49,14 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
       try { await Share.shareXFiles([XFile.fromData(bytes, name: '$fileName.txt')]); }
       catch (_) { _showSnackBar(S.homeExportFailed); }
     } else {
-      final result = await FilePicker.platform.saveFile(dialogTitle: S.homeExportDialogTitle, fileName: '$fileName.txt', bytes: bytes);
+      final result = await FilePicker.saveFile(dialogTitle: S.homeExportDialogTitle, fileName: '$fileName.txt', bytes: bytes);
       if (result != null) _showSnackBar(S.homeExportedTo(result));
     }
   }
 
   Future<void> _importData() async {
     final provider = context.read<AssetProvider>();
-    final result = await FilePicker.platform.pickFiles(type: FileType.any, withData: true);
+    final result = await FilePicker.pickFiles(type: FileType.any, withData: true);
     if (result == null || result.files.isEmpty) return;
     final file = result.files.first;
     if (file.bytes == null) { _showSnackBar(S.homeImportReadError); return; }
