@@ -78,6 +78,15 @@ class _ThemeScreenState extends State<ThemeScreen> with SingleTickerProviderStat
 
           const Divider(),
 
+          SwitchListTile(
+            title: Text(S.themeDynamicColor),
+            subtitle: Text(S.themeDynamicColorSub),
+            value: tp.useDynamicColor,
+            onChanged: (v) => tp.useDynamicColor = v,
+          ),
+
+          const Divider(),
+
           ListTile(
             title: Text(S.themeSeedColor),
             trailing: Container(

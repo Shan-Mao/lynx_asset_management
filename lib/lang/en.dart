@@ -149,6 +149,8 @@ const Map<String, String> enStrings = {
   'theme_dark': 'Dark',
   'theme_amoled': 'AMOLED Black',
   'theme_amoled_sub': 'Pure black background in dark mode',
+  'theme_dynamic_color': 'Dynamic Color',
+  'theme_dynamic_color_sub': 'Match system wallpaper colors',
   'theme_seed_color': 'Seed Color',
   'theme_save': 'Save',
   'theme_background': 'Custom Background',

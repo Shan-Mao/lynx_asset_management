@@ -14,7 +14,7 @@ A cross-platform personal asset management tool built with Flutter. Track your p
 
 ### Interface
 - **List / Grid Layout**: switch between list and compact grid modes; configure grid aspect ratio (V:V / V:H / H:H) and column counts for portrait and landscape
-- **Theme**: light, dark, system-follow, AMOLED black, custom seed colour with RGB/HSV/HSL sliders
+- **Theme**: light, dark, system-follow, AMOLED black, dynamic colour (Material You), custom seed colour with RGB/HSV/HSL sliders
 - **Language**: Chinese / English, language-file-based i18n (add new languages by creating a single map file)
 
 ### Data Management

@@ -149,6 +149,8 @@ const Map<String, String> zhStrings = {
   'theme_dark': '深色',
   'theme_amoled': 'AMOLED 纯黑',
   'theme_amoled_sub': '深色模式下使用纯黑背景，更省电',
+  'theme_dynamic_color': '动态取色',
+  'theme_dynamic_color_sub': '跟随系统壁纸自动调整主题配色',
   'theme_seed_color': '种子颜色',
   'theme_save': '保存',
   'theme_background': '自定义背景',

@@ -158,6 +158,8 @@ class S {
   static String get themeDark => t('theme_dark');
   static String get themeAmoled => t('theme_amoled');
   static String get themeAmoledSub => t('theme_amoled_sub');
+  static String get themeDynamicColor => t('theme_dynamic_color');
+  static String get themeDynamicColorSub => t('theme_dynamic_color_sub');
   static String get themeSeedColor => t('theme_seed_color');
   static String get themeSave => t('theme_save');
   static String get themeBackground => t('theme_background');
