@@ -149,10 +149,18 @@ const Map<String, String> zhStrings = {
   'theme_dark': '深色',
   'theme_amoled': 'AMOLED 纯黑',
   'theme_amoled_sub': '深色模式下使用纯黑背景，更省电',
-  'theme_dynamic_color': '动态取色',
-  'theme_dynamic_color_sub': '跟随系统壁纸自动调整主题配色',
   'theme_seed_color': '种子颜色',
   'theme_save': '保存',
+  'theme_background': '自定义背景',
+  'theme_background_sub': '仅显示在「资产」和「我的」页面',
+
+  // Background screen
+  'background_title': '自定义背景',
+  'background_pick': '选择图片',
+  'background_remove': '移除背景',
+  'background_empty': '尚未设置背景',
+  'background_note': '背景仅显示在「资产」和「我的」一级页面，不影响其他页面。',
+  'background_pick_failed': '无法读取图片。',
 
   // Seed color screen
   'seed_presets': '预设颜色',

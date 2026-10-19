@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/theme_provider.dart';
 import '../utils/strings.dart';
+import 'background_screen.dart';
 import 'seed_color_screen.dart';
 
 class ThemeScreen extends StatefulWidget {
@@ -77,34 +78,55 @@ class _ThemeScreenState extends State<ThemeScreen> with SingleTickerProviderStat
 
           const Divider(),
 
-          SwitchListTile(
-            title: Text(S.themeDynamicColor),
-            subtitle: Text(S.themeDynamicColorSub),
-            value: tp.useDynamicColor,
-            onChanged: (v) => tp.useDynamicColor = v,
+          ListTile(
+            title: Text(S.themeSeedColor),
+            trailing: Container(
+              width: 40,
+              height: 28,
+              decoration: BoxDecoration(
+                color: tp.seedColor,
+                borderRadius: BorderRadius.circular(6),
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SeedColorScreen()),
+              );
+            },
           ),
 
-          if (!tp.useDynamicColor) ...[
-            const Divider(),
+          const Divider(),
 
-            ListTile(
-              title: Text(S.themeSeedColor),
-              trailing: Container(
-                width: 40,
-                height: 28,
-                decoration: BoxDecoration(
-                  color: tp.seedColor,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const SeedColorScreen()),
-                );
-              },
+          ListTile(
+            leading: const Icon(Icons.wallpaper_outlined),
+            title: Text(S.themeBackground),
+            subtitle: Text(S.themeBackgroundSub),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (tp.backgroundImageBytes != null)
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(6),
+                    child: Image.memory(
+                      tp.backgroundImageBytes!,
+                      width: 40,
+                      height: 28,
+                      fit: BoxFit.cover,
+                      cacheWidth: 80,
+                    ),
+                  ),
+                const SizedBox(width: 8),
+                const Icon(Icons.chevron_right),
+              ],
             ),
-          ],
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const BackgroundScreen()),
+              );
+            },
+          ),
 
           const SizedBox(height: 32),
         ],

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/profile_provider.dart';
 import '../utils/strings.dart';
+import '../widgets/page_background.dart';
 import 'about_screen.dart';
 import 'image_editor_screen.dart';
 import 'settings_screen.dart';
@@ -90,7 +91,8 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(title: const Text(''), centerTitle: true, actions: [
         IconButton(icon: const Icon(Icons.brightness_6_outlined), tooltip: S.profileThemeTooltip, onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ThemeScreen()))),
       ]),
-      body: ListView(padding: const EdgeInsets.all(16), children: [
+      body: PageBackground(
+        child: ListView(padding: const EdgeInsets.all(16), children: [
         Consumer<ProfileProvider>(
           builder: (context, pp, _) {
             final name = pp.displayName.isNotEmpty ? pp.displayName : S.profileTitle;
@@ -128,8 +130,9 @@ class ProfileScreen extends StatelessWidget {
         ListTile(leading: const Icon(Icons.settings_outlined), title: Text(S.profileSettings), trailing: const Icon(Icons.chevron_right), onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsScreen()))),
         const Divider(),
         ListTile(leading: const Icon(Icons.info_outline), title: Text(S.profileAbout), trailing: const Icon(Icons.chevron_right), onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AboutScreen()))),
-        const Divider(), const SizedBox(height: 32),
-      ]),
+          const Divider(), const SizedBox(height: 32),
+        ]),
+      ),
     );
   }
 }

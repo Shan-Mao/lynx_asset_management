@@ -44,6 +44,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Locally built release APKs (not deployed with the web app)
+/release/
+
 # Sensitive & local files
 *.key
 *.pem

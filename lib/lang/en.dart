@@ -149,10 +149,18 @@ const Map<String, String> enStrings = {
   'theme_dark': 'Dark',
   'theme_amoled': 'AMOLED Black',
   'theme_amoled_sub': 'Pure black background in dark mode',
-  'theme_dynamic_color': 'Dynamic Color',
-  'theme_dynamic_color_sub': 'Match system wallpaper colors',
   'theme_seed_color': 'Seed Color',
   'theme_save': 'Save',
+  'theme_background': 'Custom Background',
+  'theme_background_sub': 'Shown only on the Assets and Profile tabs',
+
+  // Background screen
+  'background_title': 'Custom Background',
+  'background_pick': 'Choose Image',
+  'background_remove': 'Remove Background',
+  'background_empty': 'No background set',
+  'background_note': 'The background is shown only on the Assets and Profile top-level pages.',
+  'background_pick_failed': 'Could not read the image.',
 
   // Seed color screen
   'seed_presets': 'Presets',

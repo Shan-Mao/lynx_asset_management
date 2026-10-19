@@ -261,15 +261,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SizedBox(height: 12),
 
           // ---- Display ----
-          SwitchListTile(
-            title: Text(S.settingsHideRetired),
-            value: false,
-            onChanged: (_) {},
-          ),
-          SwitchListTile(
-            title: Text(S.settingsHideSold),
-            value: false,
-            onChanged: (_) {},
+          Consumer<LayoutProvider>(
+            builder: (context, lp, _) {
+              return Column(children: [
+                SwitchListTile(
+                  title: Text(S.settingsHideRetired),
+                  value: lp.hideRetired,
+                  onChanged: (v) => lp.hideRetired = v,
+                ),
+                SwitchListTile(
+                  title: Text(S.settingsHideSold),
+                  value: lp.hideSold,
+                  onChanged: (v) => lp.hideSold = v,
+                ),
+              ]);
+            },
           ),
 
           const SizedBox(height: 12),

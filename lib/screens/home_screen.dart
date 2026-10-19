@@ -13,6 +13,7 @@ import '../utils/strings.dart';
 import '../widgets/asset_card.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/grid_asset_card.dart';
+import '../widgets/page_background.dart';
 import '../widgets/summary_header.dart';
 import 'add_edit_asset_screen.dart';
 import 'asset_detail_screen.dart';
@@ -83,52 +84,57 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AddEditAssetScreen())),
         icon: const Icon(Icons.add), label: Text(S.homeAddAsset),
       ),
-      body: Consumer2<AssetProvider, LayoutProvider>(builder: (context, provider, lp, _) {
-        if (!provider.isLoaded) return const Center(child: CircularProgressIndicator());
-        if (provider.assets.isEmpty) return const EmptyState();
+      body: PageBackground(
+        child: Consumer2<AssetProvider, LayoutProvider>(builder: (context, provider, lp, _) {
+          if (!provider.isLoaded) return const Center(child: CircularProgressIndicator());
+          if (provider.assets.isEmpty) return const EmptyState();
 
-        final isGrid = lp.isGrid;
-        final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
-        final crossAxisCount = isLandscape ? lp.columnsLandscape : lp.columnsPortrait;
+          final visibleAssets = provider.assets.where(lp.isVisible).toList();
+          if (visibleAssets.isEmpty) return const EmptyState();
 
-        return CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(child: SummaryHeader(assetCount: provider.assetCount, totalValue: provider.totalValue, totalDailyCost: provider.totalDailyCost)),
-            const SliverToBoxAdapter(child: SizedBox(height: 4)),
-            if (isGrid)
-              SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: crossAxisCount,
-                  childAspectRatio: lp.gridAspect.ratio,
-                  mainAxisSpacing: 4,
-                  crossAxisSpacing: 4,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: GridAssetCard(
-                      asset: provider.assets[index],
-                      aspectRatio: lp.gridAspect.ratio,
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssetDetailScreen(assetId: provider.assets[index].id))),
+          final isGrid = lp.isGrid;
+          final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+          final crossAxisCount = isLandscape ? lp.columnsLandscape : lp.columnsPortrait;
+
+          return CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(child: SummaryHeader(assetCount: provider.assetCount, totalValue: provider.totalValue, totalDailyCost: provider.totalDailyCost)),
+              const SliverToBoxAdapter(child: SizedBox(height: 4)),
+              if (isGrid)
+                SliverGrid(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    childAspectRatio: lp.gridAspect.ratio,
+                    mainAxisSpacing: 4,
+                    crossAxisSpacing: 4,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: GridAssetCard(
+                        asset: visibleAssets[index],
+                        aspectRatio: lp.gridAspect.ratio,
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssetDetailScreen(assetId: visibleAssets[index].id))),
+                      ),
                     ),
+                    childCount: visibleAssets.length,
                   ),
-                  childCount: provider.assets.length,
-                ),
-              )
-            else
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => AssetCard(
-                    asset: provider.assets[index],
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssetDetailScreen(assetId: provider.assets[index].id))),
+                )
+              else
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) => AssetCard(
+                      asset: visibleAssets[index],
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AssetDetailScreen(assetId: visibleAssets[index].id))),
+                    ),
+                    childCount: visibleAssets.length,
                   ),
-                  childCount: provider.assets.length,
                 ),
-              ),
-            const SliverToBoxAdapter(child: SizedBox(height: 96)),
-          ],
-        );
-      }),
+              const SliverToBoxAdapter(child: SizedBox(height: 96)),
+            ],
+          );
+        }),
+      ),
     );
   }
 }

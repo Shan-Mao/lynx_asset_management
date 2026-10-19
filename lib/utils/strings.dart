@@ -158,10 +158,17 @@ class S {
   static String get themeDark => t('theme_dark');
   static String get themeAmoled => t('theme_amoled');
   static String get themeAmoledSub => t('theme_amoled_sub');
-  static String get themeDynamicColor => t('theme_dynamic_color');
-  static String get themeDynamicColorSub => t('theme_dynamic_color_sub');
   static String get themeSeedColor => t('theme_seed_color');
   static String get themeSave => t('theme_save');
+  static String get themeBackground => t('theme_background');
+  static String get themeBackgroundSub => t('theme_background_sub');
+
+  static String get backgroundTitle => t('background_title');
+  static String get backgroundPick => t('background_pick');
+  static String get backgroundRemove => t('background_remove');
+  static String get backgroundEmpty => t('background_empty');
+  static String get backgroundNote => t('background_note');
+  static String get backgroundPickFailed => t('background_pick_failed');
 
   static String get seedPresets => t('seed_presets');
 

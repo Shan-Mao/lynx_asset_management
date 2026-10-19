@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.example.lynx_asset_management"
     compileSdk = 36
-    ndkVersion = flutter.ndkVersion
+    // ndkVersion is only needed for projects with native (C/C++) code.
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
