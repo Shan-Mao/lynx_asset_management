@@ -85,25 +85,27 @@ class _ThemeScreenState extends State<ThemeScreen> with SingleTickerProviderStat
             onChanged: (v) => tp.useDynamicColor = v,
           ),
 
-          const Divider(),
+          if (!tp.useDynamicColor) ...[
+            const Divider(),
 
-          ListTile(
-            title: Text(S.themeSeedColor),
-            trailing: Container(
-              width: 40,
-              height: 28,
-              decoration: BoxDecoration(
-                color: tp.seedColor,
-                borderRadius: BorderRadius.circular(6),
+            ListTile(
+              title: Text(S.themeSeedColor),
+              trailing: Container(
+                width: 40,
+                height: 28,
+                decoration: BoxDecoration(
+                  color: tp.seedColor,
+                  borderRadius: BorderRadius.circular(6),
+                ),
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SeedColorScreen()),
+                );
+              },
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const SeedColorScreen()),
-              );
-            },
-          ),
+          ],
 
           const Divider(),
 
