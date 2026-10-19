@@ -54,11 +54,11 @@ class ProfileScreen extends StatelessWidget {
       builder: (ctx) => Padding(
         padding: const EdgeInsets.all(16),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Text('选择图标', style: Theme.of(context).textTheme.titleMedium),
+          Text(S.profileChooseIcon, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 4),
           ListTile(
             leading: const Icon(Icons.image),
-            title: const Text('从相册选择图片'),
+            title: Text(S.profilePickGallery),
             trailing: const Icon(Icons.chevron_right),
             onTap: () {
               Navigator.pop(ctx); // dismiss sheet first

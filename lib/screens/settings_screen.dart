@@ -86,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (file.bytes == null) {
       messenger
         ..hideCurrentSnackBar()
-        ..showSnackBar(const SnackBar(content: Text('无法读取文件。'), duration: Duration(seconds: 2)));
+        ..showSnackBar(SnackBar(content: Text(S.homeImportReadError), duration: const Duration(seconds: 2)));
       return;
     }
 
@@ -95,11 +95,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
       final count = provider.importFromTxt(content);
       messenger
         ..hideCurrentSnackBar()
-        ..showSnackBar(SnackBar(content: Text('已导入 $count 个资产。'), duration: const Duration(seconds: 2)));
+        ..showSnackBar(SnackBar(content: Text(S.homeImportCount(count)), duration: const Duration(seconds: 2)));
     } catch (_) {
       messenger
         ..hideCurrentSnackBar()
-        ..showSnackBar(const SnackBar(content: Text('文件解析失败，请确认是有效的导出文件。'), duration: Duration(seconds: 2)));
+        ..showSnackBar(SnackBar(content: Text(S.homeImportParseError), duration: const Duration(seconds: 2)));
     }
   }
 

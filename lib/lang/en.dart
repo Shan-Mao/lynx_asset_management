@@ -87,6 +87,8 @@ const Map<String, String> enStrings = {
   'profile_settings': 'Settings',
   'profile_about': 'About Lynx Asset Management',
   'profile_theme_tooltip': 'Theme',
+  'profile_choose_icon': 'Choose Icon',
+  'profile_pick_gallery': 'Pick from Gallery',
 
   // Settings screen
   'settings_personalization': 'Personalization',
@@ -166,6 +168,17 @@ const Map<String, String> enStrings = {
 
   // Seed color screen
   'seed_presets': 'Presets',
+
+  // Image editor screen
+  'image_editor_done': 'Done',
+  'image_editor_instructions': 'Instructions',
+  'image_editor_hint_move': '• Drag inside the crop box → move the crop area',
+  'image_editor_hint_resize': '• Drag the white corner handles → resize the crop (always 1:1 square)',
+  'image_editor_algorithm': 'Crop Algorithm',
+  'image_editor_algo_anchor': '• Fixed corner: the corner opposite the dragged handle stays anchored',
+  'image_editor_algo_handle': '• New handle position = current corner + drag delta',
+  'image_editor_algo_side': '• New side = max(|handleX − anchorX|, |handleY − anchorY|)',
+  'image_editor_algo_scale': '• Handle far from the anchor → enlarge · handle near the anchor → shrink',
 
   // About screen
   'about_desc': 'Lynx Asset Management helps you track personal assets and calculate daily average cost.\n\nSupports Android local storage and web browsing. Data can be freely imported/exported via TXT files.',

@@ -87,6 +87,8 @@ const Map<String, String> zhStrings = {
   'profile_settings': '偏好设置',
   'profile_about': '关于 Lynx 资产管理',
   'profile_theme_tooltip': '主题',
+  'profile_choose_icon': '选择图标',
+  'profile_pick_gallery': '从相册选择图片',
 
   // Settings screen
   'settings_personalization': '个性设置',
@@ -166,6 +168,17 @@ const Map<String, String> zhStrings = {
 
   // Seed color screen
   'seed_presets': '预设颜色',
+
+  // Image editor screen
+  'image_editor_done': '完成',
+  'image_editor_instructions': '操作说明',
+  'image_editor_hint_move': '• 拖拽裁剪框内部 → 移动裁剪区域',
+  'image_editor_hint_resize': '• 拖拽四角白色方块 → 调整裁剪大小（始终保持 1:1 正方形）',
+  'image_editor_algorithm': '裁剪算法',
+  'image_editor_algo_anchor': '• 固定对角：拖拽手柄的对角作为锚点，位置不动',
+  'image_editor_algo_handle': '• 新手柄位置 = 当前角坐标 + 拖拽偏移量',
+  'image_editor_algo_side': '• 新边长 = max(|手柄X − 锚点X|, |手柄Y − 锚点Y|)',
+  'image_editor_algo_scale': '• 手柄离锚点远 → 放大 · 手柄靠近锚点 → 缩小',
 
   // About screen
   'about_desc': 'Lynx 资产管理是一款帮助您追踪个人资产并计算日均成本的工具。\n\n支持 Android 本地存储和 Web 端临时浏览，数据可通过 TXT 文件在平台间自由导入导出。',
